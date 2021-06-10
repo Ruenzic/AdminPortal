@@ -49,12 +49,15 @@ export default {
     createUser (data) {
       CreateUser(data).then(response => {
         console.log(response)
+        // [TODO] - Would add toasts to let the user know the user was created successfully
+        // Also to add a loading spinner to make up for the slight delay 'Creating User..' etc.
         this.getUsers()
       })
     },
     updateUser (data) {
       UpdateUser(data).then(response => {
         console.log(response)
+        // [TODO] - Would add toasts to let the user know the user was updated successfully
         this.getUsers()
       })
     }
@@ -66,18 +69,5 @@ export default {
 </script>
 
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

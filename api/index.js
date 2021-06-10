@@ -25,6 +25,7 @@ function deleteUser(userId){
   })
 }
 
+// Replace the user with the updated user
 function updateUser(user){
   for (var i in this.users) {
     if (users[i].id == user.id) {
