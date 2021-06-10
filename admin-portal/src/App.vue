@@ -6,6 +6,7 @@
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
           <b-nav-item to="/">Dashboard</b-nav-item>
+          <b-nav-item to="/posts-manager">Posts Manager</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

@@ -21,6 +21,7 @@
         <th>Username</th>
         <th>Email</th>
         <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -37,11 +38,10 @@
               <input type="text" class="form-control" v-model="item.email" name="email" id="email" placeholder="Email" />
             </td>
             <td>
-              <!-- [TODO] - would have an edit instead of the 'edit' text -->
               <button @click='updateUser(item)' type="button" class="btn btn-success">Save</button>
             </td>
             <td>
-              <!-- [TODO] - would have an icon instead of the 'delete' text -->
+              <!-- [TODO] - would have a delete icon instead of the 'delete' text -->
               <button @click='deleteUser(item)' type="button" class="btn btn-danger">Delete</button>
             </td>
           </template>
@@ -50,7 +50,7 @@
             <td>{{ item.username }}</td>
             <td>{{ item.email }}</td>
             <td>
-              <!-- [TODO] - would have an edit instead of the 'edit' text -->
+              <!-- [TODO] - would have an edit icon instead of the 'edit' text -->
               <button @click='editUser(item)' type="button" class="btn btn-primary">Edit</button>
             </td>
             <td>
@@ -113,5 +113,8 @@ export default {
 <style>
 .highlight {
   background-color: grey;
+}
+thead {
+  background-color: darkgray;
 }
 </style>

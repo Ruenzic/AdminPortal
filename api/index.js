@@ -8,6 +8,7 @@ port = 3080;
 
 // place holder for the data, JSONPlaceholder doesn't actually write so we'll fake that here
 users = [];
+posts = [];
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -32,6 +33,20 @@ function updateUser(user){
     }
   }
 }
+
+// Get Posts for a specific user
+app.post('/api/posts', (req, res) => {
+  const userId = req.body.userId;
+  axios.get(`https://jsonplaceholder.typicode.com/posts/?userId=${userId}`)
+  .then(response => {
+    console.log(response.data);
+    posts = response.data;
+    res.json(posts);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
 
 // Get the list of users, if we already have the list stored we won't fetch it again
 app.get('/api/users', (req, res) => {

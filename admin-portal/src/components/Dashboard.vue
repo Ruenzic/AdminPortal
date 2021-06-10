@@ -8,7 +8,6 @@
     </div>
     <button @click='getUsers()' type="button" class="btn btn-warning">Refresh</button>
   </div>
-
 </template>
 
 <script>
@@ -29,7 +28,7 @@ export default {
     }
   },
   methods: {
-    getUsers () {
+    getUsers () { // TODO show spinner while loading
       GetUsers().then(response => {
         console.log(response)
         this.users = response
