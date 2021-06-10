@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>
-      <Users :users="users" />
+      <create-user-form @createUser="createUser($event)" />
+    </div>
+    <div>
+      <Users @deleteUser="deleteUser($event)" @updateUser="updateUser($event)" :users="users" />
     </div>
     <button @click='getUsers()' type="button" class="btn btn-warning">Refresh</button>
   </div>
@@ -9,13 +12,16 @@
 </template>
 
 <script>
+
 import Users from './Users.vue'
-import { getUsers } from '../services/UserService'
+import CreateUserForm from './CreateUserForm.vue'
+import { DeleteUser, GetUsers, CreateUser, UpdateUser } from '../services/UserService'
 
 export default {
   name: 'Dashboard',
   components: {
-    Users
+    Users,
+    CreateUserForm
   },
   data () {
     return {
@@ -24,10 +30,27 @@ export default {
   },
   methods: {
     getUsers () {
-      getUsers().then(response => {
+      GetUsers().then(response => {
         console.log(response)
         this.users = response
-        this.numberOfUsers = this.users.length
+      })
+    },
+    deleteUser (userId) {
+      DeleteUser(userId).then(response => {
+        console.log(response)
+        this.getUsers()
+      })
+    },
+    createUser (data) {
+      CreateUser(data).then(response => {
+        console.log(response)
+        this.getUsers()
+      })
+    },
+    updateUser (data) {
+      UpdateUser(data).then(response => {
+        console.log(response)
+        this.getUsers()
       })
     }
   },
