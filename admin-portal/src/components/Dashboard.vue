@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <!-- [TODO] - I would actually prefer this form to open in a popup on click of create a new user, not just be floating here -->
       <create-user-form @createUser="createUser($event)" />
     </div>
     <div>
@@ -29,8 +30,9 @@ export default {
     }
   },
   methods: {
-    getUsers () { // TODO show spinner while loading
+    getUsers () {
       // this.users = []
+      // [TODO] - It would be nicer to show a loading spinner instead of the text
       this.loading_users = true
       GetUsers().then(response => {
         // console.log(response)

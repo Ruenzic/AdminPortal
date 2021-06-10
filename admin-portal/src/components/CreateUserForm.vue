@@ -71,6 +71,7 @@ export default {
       this.username_error = false
     },
     checkForm () {
+      // [TODO] - Adding email format validation
       return (this.name && this.email && this.username)
     }
   }
