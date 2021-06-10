@@ -61,7 +61,8 @@
         </tr>
       </tbody>
     </table>
-    <h3 v-if="users.length == 0">No users added</h3>
+    <h3 v-if="users.length == 0 && !loading_users">No users added</h3>
+    <h3 v-if="loading_users">Loading...</h3>
   </div>
 </template>
 
@@ -69,7 +70,7 @@
 
 export default {
   name: 'Users',
-  props: ['users'],
+  props: ['users', 'loading_users'],
 
   data () {
     return {

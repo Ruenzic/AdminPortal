@@ -4,9 +4,9 @@
       <create-user-form @createUser="createUser($event)" />
     </div>
     <div>
-      <Users @deleteUser="deleteUser($event)" @updateUser="updateUser($event)" :users="users" />
+      <Users @deleteUser="deleteUser($event)" @updateUser="updateUser($event)" :loading_users="loading_users" :users="users" />
     </div>
-    <button @click='getUsers()' type="button" class="btn btn-warning">Refresh</button>
+    <button v-if="!loading_users" @click='getUsers()' type="button" class="btn btn-warning">Refresh</button>
   </div>
 </template>
 
@@ -24,13 +24,17 @@ export default {
   },
   data () {
     return {
-      users: []
+      users: [],
+      loading_users: false
     }
   },
   methods: {
     getUsers () { // TODO show spinner while loading
+      // this.users = []
+      this.loading_users = true
       GetUsers().then(response => {
-        console.log(response)
+        // console.log(response)
+        this.loading_users = false
         this.users = response
       })
     },
@@ -59,7 +63,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
