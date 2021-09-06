@@ -1,9 +1,9 @@
-export async function GetUsers () {
+export async function getUsers () {
   const response = await fetch('/api/users')
   return response.json()
 }
 
-export async function DeleteUser (userId) {
+export async function deleteUser (userId) {
   const response = await fetch('/api/user', {
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'},
@@ -12,7 +12,7 @@ export async function DeleteUser (userId) {
   return response.json()
 }
 
-export async function CreateUser (data) {
+export async function createUser (data) {
   const response = await fetch(`/api/user`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -21,7 +21,7 @@ export async function CreateUser (data) {
   return response.json()
 }
 
-export async function UpdateUser (data) {
+export async function updateUser (data) {
   const response = await fetch(`/api/user`, {
     method: 'PATCH',
     headers: {'Content-Type': 'application/json'},

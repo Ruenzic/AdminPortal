@@ -4,11 +4,10 @@
 
     <div class="row">
       <div class="col-md-11">
-        <input style="width: 100%" type="text" placeholder="Search for user by name or email..." v-model="search" />
+        <input class="user-search-input" type="text" placeholder="Search for user by name or email..." v-model="search" />
         <i class="search icon"></i>
       </div>
       <div class="col-md-1">
-        <!-- [TODO] - would have an icon instead of the 'clear' text -->
         <button @click='clearFilter()' type="button" class="btn btn-warning">Clear</button>
       </div>
     </div>
@@ -41,20 +40,17 @@
               <button @click='updateUser(item)' type="button" class="btn btn-success">Save</button>
             </td>
             <td>
-              <!-- [TODO] - would have a delete icon instead of the 'delete' text -->
               <button @click='deleteUser(item)' type="button" class="btn btn-danger">Delete</button>
             </td>
           </template>
            <template v-else>
-             <td>{{ item.name }}</td>
+            <td>{{ item.name }}</td>
             <td>{{ item.username }}</td>
             <td>{{ item.email }}</td>
             <td>
-              <!-- [TODO] - would have an edit icon instead of the 'edit' text -->
               <button @click='editUser(item)' type="button" class="btn btn-primary">Edit</button>
             </td>
             <td>
-              <!-- [TODO] - would have an icon instead of the 'delete' text -->
               <button @click='deleteUser(item)' type="button" class="btn btn-danger">Delete</button>
             </td>
           </template>
@@ -87,7 +83,6 @@ export default {
   },
   methods: {
     deleteUser (user) {
-      // Ideally we wouldn't use the brower window confirm here but rather create a popupmodal and a confirm dialogue component
       if (confirm('Are you sure?')) {
         this.$emit('deleteUser', user.id)
       }
@@ -112,10 +107,13 @@ export default {
 </script>
 
 <style>
-.highlight {
-  background-color: grey;
-}
-thead {
-  background-color: darkgray;
-}
+  .highlight {
+    background-color: grey;
+  }
+  thead {
+    background-color: darkgray;
+  }
+  .user-search-input{
+    width: 100%;
+  }
 </style>

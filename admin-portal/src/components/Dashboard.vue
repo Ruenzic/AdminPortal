@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div>
-      <!-- [TODO] - I would actually prefer this form to open in a popup on click of create a new user, not just be floating here -->
+    <div class="create-user-form-container">
       <create-user-form @createUser="createUser($event)" />
     </div>
     <div>
@@ -15,7 +14,7 @@
 
 import Users from './Users.vue'
 import CreateUserForm from './CreateUserForm.vue'
-import { DeleteUser, GetUsers, CreateUser, UpdateUser } from '../services/UserService'
+import { deleteUser, getUsers, createUser, updateUser } from '../services/UserService'
 
 export default {
   name: 'Dashboard',
@@ -31,33 +30,24 @@ export default {
   },
   methods: {
     getUsers () {
-      // this.users = []
-      // [TODO] - It would be nicer to show a loading spinner instead of the text
       this.loading_users = true
-      GetUsers().then(response => {
-        // console.log(response)
+      getUsers().then(response => {
         this.loading_users = false
         this.users = response
       })
     },
     deleteUser (userId) {
-      DeleteUser(userId).then(response => {
-        console.log(response)
+      deleteUser(userId).then(response => {
         this.getUsers()
       })
     },
     createUser (data) {
-      CreateUser(data).then(response => {
-        console.log(response)
-        // [TODO] - Would add toasts to let the user know the user was created successfully
-        // Also to add a loading spinner to make up for the slight delay 'Creating User..' etc.
+      createUser(data).then(response => {
         this.getUsers()
       })
     },
     updateUser (data) {
-      UpdateUser(data).then(response => {
-        console.log(response)
-        // [TODO] - Would add toasts to let the user know the user was updated successfully
+      updateUser(data).then(response => {
         this.getUsers()
       })
     }
@@ -68,6 +58,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+.create-user-form-container{
+  width: 50%;
+}
 
 </style>

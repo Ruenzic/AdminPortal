@@ -1,4 +1,4 @@
-export async function GetPosts (userId) {
+export async function getPosts (userId) {
   const response = await fetch('/api/posts', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},

@@ -2,12 +2,12 @@
   <div class="container">
 
     <table class="table table-bordered table-hover table-responsive">
-      <thead>
-      <tr>
-        <th>Post Id</th>
-        <th>Title</th>
-        <th>Body</th>
-      </tr>
+      <thead class="table-header">
+        <tr>
+          <th>Post Id</th>
+          <th>Title</th>
+          <th>Body</th>
+        </tr>
       </thead>
       <tbody>
         <tr v-for="item in posts" :key="item.id">
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style>
-thead {
-  background-color: darkgray;
-}
+  .table-header {
+    background-color: darkgray;
+  }
 </style>
